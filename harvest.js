@@ -20,6 +20,7 @@ MongoClient.connect(url, function(err, db) {
             collection.findOne({href:element.href}, function(err, item) {
               if(item === null) {
                 log.info("cannot find ", element.href)
+                element.shares = [];
                 element.firstSeen = new Date().getTime();
                 collection.insert(element, {w:1}, function(err, result) {
                   log.info("adding", result)
