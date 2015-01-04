@@ -5,12 +5,12 @@ var MongoClient = require('mongodb').MongoClient,
     });
     request = require('request')
 
-var url = 'mongodb://localhost:27017/exampleDb';
+var url = 'mongodb://localhost:27017/openNews';
 
 MongoClient.connect(url, function(err, db) {
   log.info("Connected correctly to server");
   
-  var collection = db.collection('test');
+  var collection = db.collection('nyt');
     setInterval(function(){
     // Peform a simple find and return all the documents
     collection.find().sort({_id:1}).toArray(function(err, docs) {
